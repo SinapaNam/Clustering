@@ -24,7 +24,7 @@ st.markdown("<h1 style='text-align: center;'>🔍 K-Means Clustering App with Ir
 
 # Sidebar
 st.sidebar.header("⚙️ Configure Clustering")
-k = st.sidebar.slider("Select number of clusters (k)", 2, 10, 3)
+k = st.sidebar.slider("Select number of clusters (K)", min_value=2, max_value=10, value=3)
 
 
 # Load Iris dataset
@@ -36,6 +36,7 @@ feature_names = iris.feature_names
 # K-Means model
 model = KMeans(n_clusters=k, random_state=42)
 y_kmeans = model.fit_predict(X)
+
 
 
 # PCA for visualization
@@ -53,6 +54,9 @@ reduced_df = pd.DataFrame(reduced, columns=["PCA1", "PCA2"])
 # Plotting
 fig, ax = plt.subplots()
 scatter = ax.scatter(X_pca[:, 0], X_pca[:, 1], c=y_kmeans, cmap='tab10', s=50)
+for cluster in range(k):
+    cluster_data = reduced_df[reduced_df["Cluster"] == cluster]
+    ax.scatter(cluster_data["PCA1"], cluster_data["PCA2"], label=f"Cluster {cluster}")
 
 
 # Labels & title
