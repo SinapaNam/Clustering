@@ -55,6 +55,12 @@ fig, ax = plt.subplots()
 scatter = ax.scatter(X_pca[:, 0], X_pca[:, 1], c=y_kmeans, cmap='tab10', s=50)
 
 
+# Labels & title
+ax.set_title("Clusters (2D PCA Projection)")
+ax.set_xlabel("PCA1")
+ax.set_ylabel("PCA2")
+
+
 # Add legend with cluster labels
 handles, labels = scatter.legend_elements()
 labels = [f"Cluster {i}" for i in range(len(handles))]
