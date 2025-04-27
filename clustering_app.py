@@ -55,7 +55,6 @@ reduced_df = pd.DataFrame(reduced, columns=["PCA1", "PCA2"])
 fig, ax = plt.subplots()
 scatter = ax.scatter(X_pca[:, 0], X_pca[:, 1], c=y_kmeans, cmap='tab10', s=50)
 for cluster in range(k):
-    cluster_data = reduced_df[reduced_df["Cluster"] == cluster]
     ax.scatter(cluster_data["PCA1"], cluster_data["PCA2"], label=f"Cluster {cluster}")
 
 
