@@ -49,7 +49,7 @@ centers_pca = pca.transform(model.cluster_centers_)
 pca = PCA(n_components=2)
 reduced = pca.fit_transform(X)
 reduced_df = pd.DataFrame(reduced, columns=["PCA1", "PCA2"])
-reduced_df["Cluster"] = labels
+reduced_df=["Cluster"] = labels
 
 # Plotting
 fig, ax = plt.subplots()
